@@ -167,7 +167,7 @@ func getWalkFn(visitedDirs map[string]bool, files *[]string, ignoreRegex string,
 			return nil
 		}
 
-		if info.Mode()&os.ModeSymlink == 0 {
+		if info.Mode()&os.ModeSymlink != os.ModeSymlink {
 			if parser.FileSupported(currentPath) {
 				*files = append(*files, currentPath)
 			}
